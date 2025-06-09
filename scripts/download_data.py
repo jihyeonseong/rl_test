@@ -55,6 +55,8 @@ def main(data_dir: str):
     for name, symbol in NAME_MAP.items():
         download_data(symbol, name, data_dir, logger)
 
+    logger.info("Data download completed.")
+
 if __name__ == "__main__":
     # 커맨드라인 인자로 저장 디렉토리 지정
     parser = argparse.ArgumentParser(description="Download data for the project.")

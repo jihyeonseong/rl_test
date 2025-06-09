@@ -20,7 +20,7 @@
 pip install -r requirements.txt
 
 # 로그 디렉토리 생성
-mkdir data logs
+mkdir -p data logs
 
 # 데이터 다운로드 실행 및 로그 저장
 python scripts/download_data.py --data_dir "./data" >> logs/download_data.log 2>&1
