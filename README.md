@@ -24,3 +24,9 @@ mkdir -p data logs
 
 # 데이터 다운로드 실행 및 로그 저장
 python scripts/download_data.py --data_dir "./data" >> logs/download_data.log 2>&1
+
+```
+
+## 📈 결과 시각화
+![Price Plot](results/figs/prices.png)
+

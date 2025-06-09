@@ -1,16 +1,9 @@
 import os
+import yaml
 import argparse
 import yfinance as yf
 
 from util import Logger
-
-# 자산명과 Yahoo Finance 티커 매핑
-NAME_MAP = {
-    "equity": "ES=F",      # S&P 500 E-mini 선물
-    "gold": "GC=F",        # 금 선물
-    "treasury": "ZB=F",    # 30년 만기 미국채 선물
-    "dollar": "DX=F",      # 달러 인덱스 선물
-}
 
 def ensure_directory(path: str, logger: Logger):
     """
@@ -47,12 +40,16 @@ def main(data_dir: str):
     전체 자산에 대해 데이터를 다운로드하고 저장합니다.
     """
     logger = Logger("DownloadData")
+    
+    with open("config/data_config.yaml", "r") as file:
+        config = yaml.safe_load(file)
+        name_map = config.get("name_map", {})
     ensure_directory(data_dir, logger)
 
     logger.info("Starting data download...")
-    logger.info(f"Downloading assets: {', '.join(NAME_MAP.keys())}")
+    logger.info(f"Downloading assets: {', '.join(name_map.keys())}")
 
-    for name, symbol in NAME_MAP.items():
+    for name, symbol in name_map.items():
         download_data(symbol, name, data_dir, logger)
 
     logger.info("Data download completed.")

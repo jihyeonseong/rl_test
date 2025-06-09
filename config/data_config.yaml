@@ -1,0 +1,5 @@
+name_map:
+  equity:   "ES=F"   # S&P 500 E-mini 선물
+  gold:     "GC=F"   # 금 선물
+  treasury: "ZB=F"   # 30년 만기 미국채 선물
+  dollar:   "DX=F"   # 달러 인덱스 선물
